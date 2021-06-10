@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>KM Express</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+     <!--header Info-->
+
+     <div class="bg-light text-center m-4">
+         <h1>KM Express- Intern Task </h1>
+          <h6>Md. Azharul Islam-Front-End Developer</h6>
+         
+    </div>
+
+    <!-- Table -->
+        <div class="col-sm-12 col-md-10 m-auto" >
+
+        <div class="d-flex">
+                  <h3>Total User List </h3>
+                  <button class="btn btn-sm btn-success ml-4">Add User</button>
+        </div>
+         <table  id="employeeList" class="list table expandable-table table-striped mt-4" >
+        
+        
+        
+            <thead>
+                 <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Total Scan</th>
+                            <th>Total Schedule</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                            <th>Role</th>
+                            <th>Last Login</th>
+                 </tr>
+              </thead>
+                        <tbody>
+                                <tr>
+                                     <td>Azhar</td>
+                                     <td>conatct.ajharislam@gmail.com</td>
+                                     <td>+8801787223642</td>
+                                     <td>250</td>
+                                     <td>50</td>
+                                    <td>Active</td>
+                                    <td>Moderator </td>
+                                    <td>2 mint ago </td>
+                                  <td >
+                                       <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#Modal" onClick="onEdit(this)"><i class="far fa-edit"></i></button>
+                                      <button class="btn btn-sm btn-danger"   onClick="onDelete(this)"> <i class="far fa-trash-alt"></i></button>
+                                  </td>
+                                </tr> 
+                <tr>
+                    <td>KM</td>
+                    <td>km@gmail.com</td>
+                    <td>+88017000000</td>
+                    <td>250</td>
+                    <td>50</td>
+                    <td>Active</td>
+                    <td>Admin </td>
+                    <td>2 mint ago </td>
+                    <td >
+                    <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#Modal" onClick="onEdit(this)"><i class="far fa-edit"></i></button>
+                    <button class="btn btn-sm btn-danger"   onClick="onDelete(this)"> <i class="far fa-trash-alt"></i></button>
+                    </td>
+                </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </div>
+
+
+<!--modal Form -->
+        <div class="modal fade" id="Modal"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="ModalLabel">Update User List</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+        
+        
+    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off" class="form">
+
+
+                        <div class="form-group">
+                            <label>Name*</label><label class="validation-error hide" id="NameValidationError">This field is required.</label>
+                            <input type="text" name="Name" id="Name" class="form-control"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input class="form-control" type="text" name="Email" id="Email">
+                        </div>
+
+                        <div class="form=group">
+                            <label>Phone</label>
+                            <input class="form-control" type="text" name="Phone" id="Phone">
+                        </div>
+
+                        <div class="form-group ">
+                            <label>Role</label>
+                            <input class="form-control" type="text" name="Role" id="Role">
+                        </div>
+
+                        <div  class="form-action-buttons">
+                            <button class="btn btn-sm btn-success" type="submit" >Update user</button>
+                        </div>
+                    </form>
+                
+                </div>
+            </div>
+            </div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
